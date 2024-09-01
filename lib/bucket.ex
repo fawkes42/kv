@@ -2,6 +2,7 @@ defmodule KV.Bucket do
   @moduledoc """
   A simple key-value store.
   """
+  use Agent
 
   @doc """
   Starts a new bucket with an empty map.
