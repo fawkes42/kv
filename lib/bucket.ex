@@ -39,4 +39,16 @@ defmodule KV.Bucket do
   def put(bucket, key, value) do
     Agent.update(bucket, fn map -> Map.put(map, key, value) end)
   end
+
+  @doc """
+  Deletes a key from the bucket.
+
+  ## Examples
+
+      iex> KV.Bucket.delete(bucket, "answer")
+      %{"answer" => 42}
+  """
+  def delete(bucket, key) do
+    Agent.get_and_update(bucket, &Map.pop(&1, key))
+  end
 end
