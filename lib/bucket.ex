@@ -46,7 +46,7 @@ defmodule KV.Bucket do
   ## Examples
 
       iex> KV.Bucket.delete(bucket, "answer")
-      %{"answer" => 42}
+      42
   """
   def delete(bucket, key) do
     Agent.get_and_update(bucket, &Map.pop(&1, key))
