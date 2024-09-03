@@ -19,4 +19,9 @@ defmodule KV.BucketTest do
   test "return nil when key is not found", %{bucket: bucket} do
     assert KV.Bucket.get(bucket, "answer") == nil
   end
+
+  test "should delete an item by key and return the removed value", %{bucket: bucket} do
+    KV.Bucket.put(bucket, "answer", 42)
+    assert KV.Bucket.delete(bucket, "answer") == 42
+  end
 end
